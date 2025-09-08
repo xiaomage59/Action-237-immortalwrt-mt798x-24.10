@@ -21,8 +21,8 @@ env:
   REPO_BRANCH: 2410
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: 2410-jcg-q30-ssrp.config
-  DIY_P1_SH: 2410-diy-part1-ssrp.sh
-  DIY_P2_SH: 2410-diy-part2-6-1-ssrp.sh
+#  DIY_P1_SH: 2410-diy-part1-ssrp.sh
+#  DIY_P2_SH: 2410-diy-part2-6-1-ssrp.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
@@ -60,9 +60,9 @@ jobs:
     - name: Load custom feeds
       run: |
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
-        chmod +x $DIY_P1_SH
-        cd openwrt
-        $GITHUB_WORKSPACE/$DIY_P1_SH
+      #  chmod +x $DIY_P1_SH
+      #  cd openwrt
+      #  $GITHUB_WORKSPACE/$DIY_P1_SH
 
     - name: Update feeds
       run: |
@@ -82,9 +82,9 @@ jobs:
       run: |
         [ -e files ] && mv files openwrt/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
-        chmod +x $DIY_P2_SH
-        cd openwrt
-        $GITHUB_WORKSPACE/$DIY_P2_SH
+       # chmod +x $DIY_P2_SH
+       # cd openwrt
+       # $GITHUB_WORKSPACE/$DIY_P2_SH
 
     - name: Download package
       id: package
